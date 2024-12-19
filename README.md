@@ -1,7 +1,11 @@
 # ICP
 
 ## 開発手順
+### Motoko
 ```sh
+プロジェクトを作成
+dfx new {project name}
+
 # ローカルネットワークを停止
 dfx stop
 
@@ -15,7 +19,38 @@ dfx canister create counter_backend
 dfx build
 
 # ローカルにデプロイ
+dfx deploy -y --network local
+```
+
+### TypeScript
+```sh
+プロジェクトを作成
+pnpm dlx azle new {project name}
+
+# ローカルネットワークを停止
+dfx stop
+
+# ローカルネットワークを起動
+dfx start --clean --host 0.0.0.0:4943 --background
+
+# コンパイル
+dfx build
+
+# ローカルにデプロイ
 dfx deploy --network local
+```
+
+### Python
+```sh
+# Python環境を構築
+pipenv install kybra
+python -m kybra install-dfx-extension
+
+# ローカルネットワークを停止
+dfx stop
+
+# ローカルネットワークを起動
+dfx start --clean --host 0.0.0.0:4943 --background
 ```
 
 ## ドキュメント
@@ -28,6 +63,7 @@ dfx deploy --network local
 
 ### Github
 - [ ] [examples](https://github.com/dfinity/examples)
+- [ ] [developer-journey](https://internetcomputer.org/docs/current/tutorials/developer-journey/)
 - [ ] [awesome-internet-computer](https://github.com/dfinity/awesome-internet-computer#courses-tutorials-and-samples)
 - [ ] [MotokoBootCampChallenges](https://github.com/samlinux/MotokoBootCampChallenges)
 
