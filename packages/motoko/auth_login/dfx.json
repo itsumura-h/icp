@@ -9,7 +9,7 @@
         "auth_login_backend"
       ],
       "source": [
-        "src/auth_login_frontend/assets"
+        "src/auth_login_frontend/dist"
       ],
       "type": "assets"
     },
