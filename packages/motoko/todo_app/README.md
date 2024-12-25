@@ -1,14 +1,3 @@
-II: 10000
-
-```
-10000 chapter snow nice very hundred crater metal bomb armed cushion boring helmet tag topple extend lunar unusual absent blade tiger harvest debate cloth because
-
-II Canister ID: bkyz2-fmaaa-aaaaa-qaaaq-cai
-App Canister ID: bd3sg-teaaa-aaaaa-qaaba-cai
-```
-
----
-
 # `todo_app`
 
 Welcome to your new `todo_app` project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
