@@ -1,0 +1,19 @@
+{
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "name": "auth_login",
+  "scripts": {
+    "dev": "pnpm --filter auth_login_frontend dev",
+    "build": "pnpm --filter auth_login_frontend build",
+    "prebuild": "pnpm --filter auth_login_frontend prebuild",
+    "pretest": "pnpm --filter auth_login_frontend prebuild",
+    "start": "pnpm --filter auth_login_frontend start",
+    "test": "pnpm --filter auth_login_frontend test"
+  },
+  "type": "module",
+  "workspaces": [
+    "src/auth_login_frontend"
+  ]
+}

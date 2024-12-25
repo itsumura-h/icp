@@ -11,7 +11,8 @@
       "source": [
         "src/auth_login_frontend/dist"
       ],
-      "type": "assets"
+      "type": "assets",
+      "workspace": "auth_login_frontend"
     },
     "internet_identity": {
       "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",

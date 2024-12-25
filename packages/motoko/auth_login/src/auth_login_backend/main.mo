@@ -5,7 +5,7 @@ actor {
     return "Hello, " # name # "!";
   };
 
-  public query (msg) func getCaller() : async Principal {
+  public query (msg) func getPrincipal() : async Principal {
     return msg.caller;
   };
 };
