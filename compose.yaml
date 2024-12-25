@@ -8,3 +8,4 @@ services:
       - .:/application
     ports:
       - 4943:4943
+      - 3000:3000

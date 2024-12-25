@@ -35,9 +35,9 @@ RUN rm node-v${NODE_VERSION}-linux-x64.tar.xz
 RUN mv node-v${NODE_VERSION}-linux-x64 .node
 ENV PATH $PATH:/root/.node/bin
 
-# # pnpm
-# RUN curl -fsSL https://get.pnpm.io/install.sh | bash -
-# ENV PATH $PATH:/root/.local/share/pnpm
+# pnpm
+RUN curl -fsSL https://get.pnpm.io/install.sh | bash -
+ENV PATH $PATH:/root/.local/share/pnpm
 
 # # python
 # RUN curl https://pyenv.run | bash

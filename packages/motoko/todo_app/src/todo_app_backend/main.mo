@@ -3,8 +3,8 @@ import Text "mo:base/Text";
 import Storage "storage/storage";
 import Create "functions/create";
 import UpdateContent "functions/updateContent";
-import UpdateInProgress "functions/updateInProgress";
-import UpdateCompleted "functions/updateCompleted";
+import UpdateToInProgress "functions/updateToInProgress";
+import UpdateToCompleted "functions/updateToCompleted";
 import GetByTaskId "functions/getByTaskId";
 import GetByUserId "functions/getByUserId";
 import ResponseTypes "responseTypes";
@@ -20,12 +20,12 @@ actor {
     return UpdateContent.invoke(storage, userId, id, content);
   };
 
-  public func updateInProgress(userId : Principal, id : Text) {
-    return UpdateInProgress.invoke(storage, userId, id);
+  public func updateToInProgress(userId : Principal, id : Text) {
+    return UpdateToInProgress.invoke(storage, userId, id);
   };
 
-  public func updateCompleted(userId : Principal, id : Text) {
-    return UpdateCompleted.invoke(storage, userId, id);
+  public func updateToCompleted(userId : Principal, id : Text) {
+    return UpdateToCompleted.invoke(storage, userId, id);
   };
 
   public query func getByTaskId(userId : Principal, id : Text) : async ResponseTypes.GetByTaskIdResponseType {
