@@ -1,0 +1,21 @@
+{
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "name": "identity_kit",
+  "scripts": {
+    "build": "pnpm --filter identity_kit_frontend build",
+    "prebuild": "pnpm --filter identity_kit_frontend prebuild",
+    "pretest": "pnpm --filter identity_kit_frontend prebuild",
+    "start": "pnpm --filter identity_kit_frontend start",
+    "test": "pnpm --filter identity_kit_frontend test"
+  },
+  "type": "module",
+  "workspaces": [
+    "src/identity_kit_frontend"
+  ],
+  "dependencies": {
+    "@nfid/identitykit": "^1.0.7"
+  }
+}

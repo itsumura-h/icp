@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks';
-import type { Principal } from "@dfinity/principal";
+import { type Principal } from "@dfinity/principal";
 import { useIcp } from "../../libs/icp"
 
 export function Home() {
