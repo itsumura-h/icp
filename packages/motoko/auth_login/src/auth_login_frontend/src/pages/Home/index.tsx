@@ -25,7 +25,7 @@ export function Home() {
 			<article>
 				<h1 class="font-bold text-2xl p-4">Home</h1>
 				<section class="p-4">
-					<form class="bg-gray-100">
+					<div class="bg-gray-100">
 						<div class="p-2">
 							<input
 								class="input input-bordered"
@@ -45,11 +45,11 @@ export function Home() {
 							</button>
 						</div>
 						<p class="p-4">{msg}</p>
-					</form>
+					</div>
 				</section>
 
 				<section class="p-4">
-					<form class="bg-gray-100">
+					<div class="bg-gray-100">
 						{isLogin ? (
 							<>
 								<p class="p-4">{identity?.getPrincipal().toText()}</p>
@@ -66,7 +66,7 @@ export function Home() {
 								</button>
 							</div>
 						)}
-					</form>
+					</div>
 				</section>
 
 				<section class=" p-4">
@@ -79,7 +79,6 @@ export function Home() {
 						<p class="p-4">{principal?.toText()}</p>
 					</form>
 				</section>
-
 
 			</article>
 		</>
