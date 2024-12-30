@@ -9,6 +9,7 @@
 	},
 	"dependencies": {
 		"@preact/signals": "^2.0.0",
+		"ic-connect-kit": "link:../ic-connect-kit",
 		"preact": "^10.25.3",
 		"preact-iso": "^2.8.1"
 	},
