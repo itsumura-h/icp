@@ -1,2 +1,3 @@
 packages:
   - src/auth_login_frontend
+  - src/ic-connect-kit

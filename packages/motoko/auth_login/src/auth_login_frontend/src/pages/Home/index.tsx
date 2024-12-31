@@ -80,6 +80,12 @@ export function Home() {
 					</form>
 				</section>
 
+				<section class="p-4">
+					<div class="bg-gray-100">
+						<IcConnectKit />
+					</div>
+				</section>
+
 			</article>
 		</>
 	);
