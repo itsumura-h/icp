@@ -2,13 +2,19 @@
 pragma solidity ^0.8.13;
 
 contract Counter {
-    uint256 public number;
+  event NumberSet(uint256 indexed oldNumber, uint256 indexed newNumber);
 
-    function setNumber(uint256 newNumber) public {
-        number = newNumber;
-    }
+  uint256 public number;
 
-    function increment() public {
-        number++;
-    }
+  function setNumber(uint256 newNumber) public {
+    uint256 oldNumber = number;
+    number = newNumber;
+    emit NumberSet(oldNumber, newNumber);
+  }
+
+  function increment() public {
+    uint256 oldNumber = number;
+    number++;
+    emit NumberSet(oldNumber, number);
+  }
 }
