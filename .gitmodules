@@ -4,3 +4,6 @@
 [submodule "packages/solidity/lib/openzeppelin-contracts"]
 	path = packages/solidity/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "packages/solidity/lib/openzeppelin-contracts-upgradeable"]
+	path = packages/solidity/lib/openzeppelin-contracts-upgradeable
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable
