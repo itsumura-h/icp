@@ -62,10 +62,11 @@ pnpm install
 ```
 
 ### フロントエンド内の設定を書き換える
+Vite5になってから環境変数のロードが動かないので下記を参考に修正する  
+https://github.com/ElMassimo/vite-plugin-environment/issues/15#issuecomment-1902831069
+
 vite.config.ts
 ```ts
-// https://github.com/ElMassimo/vite-plugin-environment/issues/15#issuecomment-1902831069
-
 import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
