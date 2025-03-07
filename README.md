@@ -62,16 +62,44 @@ pnpm install
 ```
 
 ### フロントエンド内の設定を書き換える
+Vite5になってから環境変数のロードが動かないので下記を参考に修正する  
+https://github.com/ElMassimo/vite-plugin-environment/issues/15#issuecomment-1902831069
+
 vite.config.ts
 ```ts
-import { fileURLToPath, URL } from 'url';
-import { defineConfig } from 'vite';
-import EnvironmentPlugin from 'vite-plugin-environment';
-import preact from '@preact/preset-vite';
-import dotenv from 'dotenv';
+import { fileURLToPath, URL } from "url";
+import { defineConfig } from "vite";
+import preact from "@preact/preset-vite";
+import EnvironmentPlugin, {
+  type EnvVarDefaults,
+} from "vite-plugin-environment";
+import tailwindcss from "@tailwindcss/vite";
 
-dotenv.config({ path: '../../.env' });
+import { config } from "dotenv";
+config({ path: `${process.cwd()}/../../.env` });
 
+const envVarsToInclude = [
+  // put the ENV vars you want to expose here
+  "DFX_VERSION",
+  "DFX_NETWORK",
+  "CANISTER_ID_INTERNET_IDENTITY",
+  "CANISTER_ID_II_WALLET_FRONTEND",
+  "CANISTER_ID_II_WALLET_BACKEND",
+  "CANISTER_ID",
+  "CANISTER_CANDID_PATH",
+];
+const esbuildEnvs = Object.fromEntries(
+  envVarsToInclude.map(key => [
+    `process.env.${key}`,
+    JSON.stringify(process.env[key]),
+  ])
+);
+
+const viteEnvMap: EnvVarDefaults = Object.fromEntries(
+  envVarsToInclude.map(entry => [entry, undefined])
+);
+
+// https://vitejs.dev/config/
 export default defineConfig({
   build: {
     emptyOutDir: true,
@@ -80,6 +108,7 @@ export default defineConfig({
     esbuildOptions: {
       define: {
         global: "globalThis",
+        ...esbuildEnvs,
       },
     },
   },
@@ -91,21 +120,24 @@ export default defineConfig({
       },
     },
   },
-  publicDir: "assets",
   plugins: [
-    preact(),
-    EnvironmentPlugin("all", { prefix: "CANISTER_" }),
-    EnvironmentPlugin("all", { prefix: "DFX_" }),
+    preact({
+      prerender: {
+        enabled: true,
+        renderTarget: "#app",
+      },
+    }),
+    tailwindcss(),
+    EnvironmentPlugin(viteEnvMap),
   ],
   resolve: {
-		alias:{
-			"declarations": fileURLToPath(
-				new URL("../declarations", import.meta.url)
-			),
-			"react": "preact/compat",
-			"react-dom": "preact/compat",
-		},
-    dedupe: ['@dfinity/agent'],
+    alias: [
+      {
+        find: "declarations",
+        replacement: fileURLToPath(new URL("../declarations", import.meta.url)),
+      },
+    ],
+    dedupe: ["@dfinity/agent"],
   },
 });
 ```
