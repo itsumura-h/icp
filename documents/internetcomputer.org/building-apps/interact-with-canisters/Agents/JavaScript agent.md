@@ -1,3 +1,8 @@
+https://internetcomputer.org/docs/building-apps/interact-with-canisters/agents/javascript-agent
+
+https://github.com/dfinity/portal/blob/master/docs/building-apps/interact-with-canisters/agents/javascript-agent.mdx
+
+
 ---
 キーワード: [中級, エージェント, チュートリアル, JavaScript]
 ---
