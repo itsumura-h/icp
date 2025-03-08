@@ -1,6 +1,6 @@
 https://internetcomputer.org/docs/current/developer-docs/developer-tools/off-chain/agents/overview
 
-https://github.com/dfinity/portal/blob/master/docs/developer-docs/developer-tools/off-chain/agents/overview.mdx
+https://github.com/dfinity/portal/blob/master/docs/building-apps/interact-with-canisters/agents/overview.mdx
 
 ---
 キーワード: [中級, エージェント, 概要, JavaScript, Rust, Node.js]

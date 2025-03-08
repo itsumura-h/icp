@@ -39,11 +39,10 @@ ENV PATH $PATH:/root/.node/bin
 RUN curl -fsSL https://get.pnpm.io/install.sh | bash -
 ENV PATH $PATH:/root/.local/share/pnpm
 
-# # python
-# RUN curl https://pyenv.run | bash
-# ENV PATH $PATH:/root/.pyenv/bin
-# # RUN pyenv install 3.10.7
-# ENV PIPENV_VENV_IN_PROJECT true
+# foundry
+RUN curl -L https://foundry.paradigm.xyz | bash
+ENV PATH=/root/.foundry/bin/:$PATH
+RUN foundryup
 
 RUN git config --global --add safe.directory /application
 WORKDIR /application

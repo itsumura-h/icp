@@ -1,0 +1,30 @@
+{
+  "canisters": {
+    "eth_event_backend": {
+      "main": "src/eth_event_backend/main.mo",
+      "type": "motoko"
+    },
+    "eth_event_frontend": {
+      "dependencies": [
+        "eth_event_backend"
+      ],
+      "source": [
+        "src/eth_event_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "eth_event_frontend"
+    },
+    "evm_rpc": {
+      "type": "pull",
+      "id": "7hfb6-caaaa-aaaar-qadga-cai"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
