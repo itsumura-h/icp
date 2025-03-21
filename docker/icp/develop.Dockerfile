@@ -20,7 +20,7 @@ WORKDIR /root
 
 # icp
 ## https://github.com/dfinity/sdk/releases/latest
-ARG DFX_VERSION=0.22.0
+ARG DFX_VERSION=0.25.0
 RUN curl -OL https://internetcomputer.org/install.sh
 RUN chmod +x install.sh
 ARG DFXVM_INIT_YES=yes
@@ -28,7 +28,7 @@ RUN DFXVM_INIT_YES=$DFXVM_INIT_YES DFX_VERSION=$DFX_VERSION ./install.sh
 
 # nodejs
 # https://nodejs.org/en/download/prebuilt-binaries
-ARG NODE_VERSION=20.18.1
+ARG NODE_VERSION=20.19.0
 RUN curl -OL https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz
 RUN tar -xvf node-v${NODE_VERSION}-linux-x64.tar.xz
 RUN rm node-v${NODE_VERSION}-linux-x64.tar.xz

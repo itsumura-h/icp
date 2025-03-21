@@ -1,0 +1,33 @@
+{
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite --mode develop --host 0.0.0.0 --port 3000",
+		"build": "vite --mode production build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@dfinity/agent": "^2.3.0",
+		"@dfinity/auth-client": "^2.3.0",
+		"preact": "^10.25.3",
+		"preact-iso": "^2.9.1",
+		"preact-render-to-string": "^6.5.13",
+		"viem": "^2.23.13",
+		"wouter": "^3.6.0"
+	},
+	"devDependencies": {
+		"@preact/preset-vite": "^2.9.3",
+		"@tailwindcss/typography": "^0.5.16",
+		"@tailwindcss/vite": "^4.0.15",
+		"autoprefixer": "^10.4.21",
+		"daisyui": "^5.0.9",
+		"eslint": "^9.22.0",
+		"eslint-config-preact": "^1.5.0",
+		"tailwindcss": "^4.0.15",
+		"typescript": "^5.8.2",
+		"vite": "^6.0.4"
+	},
+	"eslintConfig": {
+		"extends": "preact"
+	}
+}

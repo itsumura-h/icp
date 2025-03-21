@@ -1,0 +1,18 @@
+{
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "name": "t-ecdsa",
+  "scripts": {
+    "build": "pnpm --filter t-ecdsa-frontend build",
+    "prebuild": "pnpm --filter t-ecdsa-frontend prebuild",
+    "pretest": "pnpm --filter t-ecdsa-frontend pretest",
+    "start": "pnpm --filter t-ecdsa-frontend start",
+    "test": "pnpm --filter t-ecdsa-frontend test"
+  },
+  "type": "module",
+  "workspaces": [
+    "src/t-ecdsa-frontend"
+  ]
+}

@@ -39,26 +39,79 @@ touch pnpm-workspace.yaml
 pnpm-workspace.yaml
 ```yaml
 packages:
-  - src/auth_login_frontend
+  - src/{project name}-frontend
 ```
 
 ```sh
 pnpm create preact
 >Project directory
->> {project name}_frontend
+>> {project name}-frontend
 > Project language
 >> TypeScript
 > Use router?
->> Yes
-> Prerender app (SSG)?
 >> No
+> Prerender app (SSG)?
+>> Yes
 > Use ESLint?
 >> Yes
 
-mv src/{project name}_frontend src/{project name}_frontend.bk
-cp -r {project name}_frontend src/
-rm -fr {project name}_frontend
+rm -fr src/{project name}-frontend
+mv {project name}-frontend src/
+cd src/{project name}-frontend
 pnpm install
+pnpm add @dfinity/auth-client @dfinity/agent
+```
+
+### フロントエンドの設定
+ICPのライブラリをインストール
+```sh
+pnpm add @dfinity/auth-client @dfinity/agent
+```
+
+ハッシュルーティングのためのwouterをインストール
+```sh
+pnpm add wouter
+```
+
+index.tsx
+```tsx
+import "preact/debug";
+import { hydrate, prerender as ssr } from 'preact-iso';
+import { Router, Route, Switch } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
+import { HomePage } from "./pages/Home";
+import './style.css';
+
+export function App() {
+	return (
+		<div class="min-h-screen bg-gray-100 max-w-screen mx-auto">
+			<Router hook={useHashLocation} base="/">
+				<Switch>
+					<Route path="/" component={HomePage} />
+				</Switch>
+			</Router>
+		</div>
+	);
+}
+
+if (typeof window !== 'undefined') {
+	hydrate(<App />, document.getElementById('app'));
+}
+
+export async function prerender(data) {
+	return await ssr(<App {...data} />);
+}
+```
+
+### tailwindの設定
+```sh
+pnpm add -D tailwindcss @tailwindcss/vite @tailwindcss/typography autoprefixer daisyui
+```
+
+src/style.css
+```css
+@import "tailwindcss";
+@plugin "daisyui";
 ```
 
 ### フロントエンド内の設定を書き換える
@@ -179,17 +232,17 @@ package.json
     "node": ">=16.0.0",
     "npm": ">=7.0.0"
   },
-  "name": "auth_login",
+  "name": "{project name}",
   "scripts": {
-    "build": "pnpm --filter auth_login_frontend build",
-    "prebuild": "pnpm --filter auth_login_frontend prebuild",
-    "pretest": "pnpm --filter auth_login_frontend prebuild",
-    "start": "pnpm --filter auth_login_frontend start",
-    "test": "pnpm --filter auth_login_frontend test"
+    "build": "pnpm --filter {project name}-frontend build",
+    "prebuild": "pnpm --filter {project name}-frontend prebuild",
+    "pretest": "pnpm --filter {project name}-frontend pretest",
+    "start": "pnpm --filter {project name}-frontend start",
+    "test": "pnpm --filter {project name}-frontend test"
   },
   "type": "module",
   "workspaces": [
-    "src/auth_login_frontend"
+    "src/{project name}-frontend"
   ]
 }
 ```
@@ -224,7 +277,7 @@ export const Component = () => {
       <input
         type="text"
         value={input}
-        onChange={(e) => setInput(e.currentTarget.value)}
+        onChange={(e) => setInput(e.target.value)}
       />
       <button onClick={greet}>Greet</button>
       <p>{msg}</p>
@@ -232,6 +285,30 @@ export const Component = () => {
   )
 };
 ```
+
+### Candid UI
+```
+All canisters have already been created.
+Upgraded code for canister t-ecdsa-backend, with canister ID bd3sg-teaaa-aaaaa-qaaba-cai
+Deployed canisters.
+URLs:
+  Frontend canister via browser:
+    internet_identity:
+      - http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:4943/ (Recommended)
+      - http://127.0.0.1:4943/?canisterId=bkyz2-fmaaa-aaaaa-qaaaq-cai (Legacy)
+    t-ecdsa-frontend:
+      - http://be2us-64aaa-aaaaa-qaabq-cai.localhost:4943/ (Recommended)
+      - http://127.0.0.1:4943/?canisterId=be2us-64aaa-aaaaa-qaabq-cai (Legacy)
+  Backend canister via Candid interface:
+    internet_identity: http://127.0.0.1:4943/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+    t-ecdsa-backend: http://127.0.0.1:4943/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai&id=bd3sg-teaaa-aaaaa-qaaba-cai
+```
+
+t-ecdsa-backendの  
+http://localhost:4943/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai&id=bd3sg-teaaa-aaaaa-qaaba-cai&ii=http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:4943/
+
+にアクセスするとIIでログインができる  
+クエリパラメータのiiパラメータにIIのキャニスターのURLを指定する
 
 
 ## ドキュメント
